@@ -1,0 +1,35 @@
+<div class="weather-card-container">
+  <mat-card class="weather-card">
+    <div class="bg-image" style="border-radius: 35px">
+      <img
+        src="{{
+          imageUrl
+            ? imageUrl
+            : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp'
+        }}"
+        class="card-img"
+        alt="weather"
+      />
+      <div class="mask"></div>
+    </div>
+    <mat-card-content class="weather-card-content">
+      <div class="weather-header">
+        <h6 class="location">{{ location }}</h6>
+        <h6 class="time">{{ timeDifference }}</h6>
+      </div>
+
+      <div class="weather-info text-center">
+        <h6 class="temperature">{{ timeDifferenceInDays }} <span>days</span></h6>
+        <span class="condition">{{ description }}</span>
+      </div>
+
+      <div class="card-actions">
+        <mat-icon class="action-icon heart">favorite</mat-icon>
+        <mat-icon class="action-icon edit" (click)="onEdit()">edit</mat-icon>
+        <mat-icon class="action-icon delete" (click)="onDelete()"
+          >delete</mat-icon
+        >
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

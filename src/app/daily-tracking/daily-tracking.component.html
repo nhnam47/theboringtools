@@ -1,0 +1,43 @@
+<div>
+  <h2>Daily Tracking</h2>
+  <!-- <form (ngSubmit)="addItem()">
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="newItem.title" name="name" required />
+    <label for="description">Description:</label>
+    <input
+      id="description"
+      [(ngModel)]="newItem.description"
+      name="description"
+      required
+    />
+    <label for="startDay">Start Day:</label>
+    <input
+      id="startDay"
+      [(ngModel)]="newItem.startDay"
+      name="startDay"
+      type="date"
+      required
+    />
+
+    <button type="submit">Add Item</button>
+  </form> -->
+
+  <div class="card-container">
+    <div *ngFor="let item of items$ | async">
+      <app-card
+        [title]="item.title"
+        [description]="item.description"
+        [startDay]="item.startDay"
+        [createdDate]="item.createdDate"
+        [location]="item.location"
+        [imageUrl]="item.imageUrl"
+        (edit)="openCardDetail(item)"
+        (delete)="confirmDelete(item)"
+      ></app-card>
+    </div>
+  </div>
+
+  <button type="button" class="add-item-button" (click)="addItem()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

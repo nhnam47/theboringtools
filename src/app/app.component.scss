@@ -1,0 +1,12 @@
+.main-container {
+  display: flex;
+}
+
+app-side-nav {
+  width: 250px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}

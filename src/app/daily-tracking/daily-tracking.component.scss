@@ -1,0 +1,47 @@
+/* filepath: /Users/nhnam47/Projects/TrackingDay/src/app/daily-tracking/daily-tracking.component.scss */
+div {
+  margin: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+input {
+  margin-right: 10px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px; /* Adjust the gap between cards as needed */
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-item {
+  display: flex;
+  justify-content: center;
+}
+
+
+.add-item-button mat-icon {
+  font-size: 24px;
+}
