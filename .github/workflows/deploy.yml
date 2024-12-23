@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Build the project
-      run: npm run build -- --production --base-href "https://nhnam47.github.io/theboringtools/"
+      run: npm run build  ng build --configuration production --base-href "https://nhnam47.github.io/theboringtools/"
       env:
         NG_APP_FIREBASE_API_KEY: ${{ secrets.NG_APP_FIREBASE_API_KEY }}
         NG_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.NG_APP_FIREBASE_AUTH_DOMAIN }}
