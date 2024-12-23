@@ -1,0 +1,25 @@
+.selected-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+.photo-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 16px;
+
+  mat-label {
+    margin-bottom: 8px;
+  }
+
+  .selected-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+}
+
+.full-width {
+  width: 100%;
+}

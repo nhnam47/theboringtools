@@ -9,4 +9,5 @@ export interface Item {
   location: string;
   imageUrl?: string;
   createdBy?: string;
+  imageBase64?: string;
 }

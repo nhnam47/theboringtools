@@ -14,14 +14,16 @@
     </div>
     <mat-card-content class="weather-card-content">
       <div class="weather-header">
-        <h6 class="location">{{ location }}</h6>
         <h6 class="time">{{ timeDifference }}</h6>
       </div>
 
       <div class="weather-info text-center">
-        <h6 class="temperature">{{ timeDifferenceInDays }} <span>days</span></h6>
-        <span class="condition">{{ description }}</span>
+        <h6 class="temperature">
+          {{ timeDifferenceInDays }} <span>days</span>
+        </h6>
       </div>
+      <h6 class="location">{{ location }}</h6>
+      <span class="condition">{{ description }}</span>
 
       <div class="card-actions">
         <mat-icon class="action-icon heart">favorite</mat-icon>

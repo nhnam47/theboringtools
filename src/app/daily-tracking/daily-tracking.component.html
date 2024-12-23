@@ -1,27 +1,4 @@
 <div>
-  <h2>Daily Tracking</h2>
-  <!-- <form (ngSubmit)="addItem()">
-    <label for="name">Name:</label>
-    <input id="name" [(ngModel)]="newItem.title" name="name" required />
-    <label for="description">Description:</label>
-    <input
-      id="description"
-      [(ngModel)]="newItem.description"
-      name="description"
-      required
-    />
-    <label for="startDay">Start Day:</label>
-    <input
-      id="startDay"
-      [(ngModel)]="newItem.startDay"
-      name="startDay"
-      type="date"
-      required
-    />
-
-    <button type="submit">Add Item</button>
-  </form> -->
-
   <div class="card-container">
     <div *ngFor="let item of items$ | async">
       <app-card

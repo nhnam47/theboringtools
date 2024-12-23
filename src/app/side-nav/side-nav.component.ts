@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,6 +23,7 @@ import {
   onAuthStateChanged,
 } from '@angular/fire/auth';
 import { Item } from '../daily-tracking/daily-tracking.model';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-side-nav',
@@ -36,6 +37,7 @@ import { Item } from '../daily-tracking/daily-tracking.model';
       MatSidenavModule,
       MatListModule,
       RouterModule,
+      MatMenuModule,
     ],
   ],
   templateUrl: './side-nav.component.html',
@@ -47,9 +49,9 @@ export class SideNavComponent {
 
   fillerNav = [
     { name: 'Home', route: '/home' },
-    { name: 'DAILY-ME', route: '/daily-me' },
-    { name: 'DAILY-TRACKING', route: '/daily-tracking' },
-    { name: 'TODO', route: '/todo' },
+    // { name: 'DAILY-ME', route: '/daily-me' },
+    // { name: 'DAILY-TRACKING', route: '/daily-tracking' },
+    // { name: 'TODO', route: '/todo' },
   ];
 
   fillerContent = Array.from(
@@ -64,6 +66,7 @@ export class SideNavComponent {
 
   isLoggedIn = false;
   userName = '';
+  userPhotoUrl = '';
   items$: Observable<Item[]> | undefined;
 
   private _mobileQueryListener: () => void;
@@ -83,8 +86,15 @@ export class SideNavComponent {
 
   ngOnInit(): void {
     onAuthStateChanged(this.auth, (user) => {
-      this.isLoggedIn = !!user;
-      this.userName = user ? user.displayName ?? '' : '';
+      if (user) {
+        this.isLoggedIn = true;
+        this.userName = user.displayName || '';
+        this.userPhotoUrl = user.photoURL || '';
+      } else {
+        this.isLoggedIn = false;
+        this.userName = '';
+        this.userPhotoUrl = '';
+      }
     });
 
     // this.items$ = this.firestoreService.getItems();
@@ -103,5 +113,11 @@ export class SideNavComponent {
   }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+  closeSidenav(snav: MatSidenav): void {
+    console.log('closeSidenav');
+    if (this.mobileQuery.matches) {
+      snav.close();
+    }
   }
 }

@@ -1,34 +1,59 @@
-<h1 mat-dialog-title>{{ data.id ? 'Edit Card' : 'Create Card' }}</h1>
+<h1 mat-dialog-title>{{ data.id ? "Edit Card" : "Create Card" }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
-    <mat-form-field>
+    <mat-form-field class="full-width">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="full-width">
       <mat-label>Description</mat-label>
       <input matInput formControlName="description" />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="full-width">
       <mat-label>Location</mat-label>
       <input matInput formControlName="location" />
     </mat-form-field>
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-label>Image url</mat-label>
       <input matInput formControlName="imageUrl" />
-    </mat-form-field>
-    <mat-form-field>
+    </mat-form-field> -->
+    <mat-form-field class="full-width">
       <mat-label>Start Day</mat-label>
       <input matInput [matDatepicker]="picker1" formControlName="startDay" />
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
-    <mat-form-field>
+    <!-- <mat-form-field class="full-width">
       <mat-label>Created Date</mat-label>
       <input matInput [matDatepicker]="picker2" formControlName="createdDate" />
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field> -->
+
+    <!-- <mat-form-field>
+      <mat-label>Upload Image</mat-label>
+      <input type="file" (change)="onFileSelected($event)" />
     </mat-form-field>
+     -->
+    <div class="photo-upload-container">
+      <mat-label>Photo</mat-label>
+      <button type="button" mat-raised-button (click)="fileInput.click()">
+        Choose File
+      </button>
+      <input
+        hidden
+        (change)="onFileSelected($event)"
+        #fileInput
+        type="file"
+        id="file"
+      />
+      <div *ngIf="isLoading" class="loading-spinner">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+      <div *ngIf="resizedImage">
+        <img [src]="resizedImage" alt="Selected Image" class="selected-image" />
+      </div>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions>

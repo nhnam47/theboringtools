@@ -11,14 +11,13 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    component: DailyTrackingComponent,
   },
-  {
-    path: 'daily-me',
-    component: DailyMeComponent,
-  },
-  { path: 'daily-tracking', component: DailyTrackingComponent },
-  { path: 'callback', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // {
+  //   path: 'daily-me',
+  //   component: DailyMeComponent,
+  // },
+  // { path: 'daily-tracking', component: DailyTrackingComponent },
+  // { path: 'callback', component: HomeComponent },
   { path: '**', redirectTo: '/home' },
 ];

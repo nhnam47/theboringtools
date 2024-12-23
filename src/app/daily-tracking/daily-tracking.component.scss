@@ -30,8 +30,8 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px; /* Adjust the gap between cards as needed */
-
-  @media (max-width: 576px) {
+  position: relative;
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
 }
@@ -41,6 +41,22 @@ button {
   justify-content: center;
 }
 
+.add-item-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
 
 .add-item-button mat-icon {
   font-size: 24px;

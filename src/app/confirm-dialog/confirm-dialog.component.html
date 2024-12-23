@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Confirm Delete</h1>
 <div mat-dialog-content>Are you sure you want to delete this card?</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
   <button mat-button (click)="onConfirm()">Delete</button>
 </div>

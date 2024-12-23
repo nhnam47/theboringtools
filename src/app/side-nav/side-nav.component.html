@@ -3,18 +3,35 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">Responsive App</h1>
+    <h1 class="example-app-name">DAILIYOU</h1>
     <span class="spacer"></span>
-    <button mat-button *ngIf="!isLoggedIn" (click)="login()">Login</button>
-    <div *ngIf="isLoggedIn" class="user-info">
-      <span>{{ userName }}</span>
-      <button mat-button (click)="logout()">Logout</button>
-    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <ng-container *ngIf="isLoggedIn; else anonymousIcon">
+        <img [src]="userPhotoUrl" alt="User Avatar" class="user-avatar" />
+      </ng-container>
+      <ng-template #anonymousIcon>
+        <mat-icon>account_circle</mat-icon>
+      </ng-template>
+    </button>
+    <mat-menu #menu="matMenu">
+      <ng-container *ngIf="!isLoggedIn">
+        <button mat-menu-item (click)="login()">Login</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn">
+        <div class="user-info">
+          <div class="user-name">{{ userName }}</div>
+          <div class="logout-button">
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </div>
+        </div>
+      </ng-container>
+    </mat-menu>
+    <!-- </mat-toolbar> -->
   </mat-toolbar>
 
   <mat-sidenav-container
     class="example-sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    [style.marginTop.px]="mobileQuery.matches ? 70 : 0"
   >
     <mat-sidenav
       #snav
@@ -24,7 +41,12 @@
     >
       <mat-nav-list>
         @for (nav of fillerNav; track nav) {
-        <a mat-list-item [routerLink]="nav.route">{{ nav.name }}</a>
+        <a
+          mat-list-item
+          [routerLink]="nav.route"
+          (click)="closeSidenav(snav)"
+          >{{ nav.name }}</a
+        >
         }
       </mat-nav-list>
     </mat-sidenav>
