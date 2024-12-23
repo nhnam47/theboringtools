@@ -27,20 +27,30 @@ jobs:
     - name: Install Node.js type definitions
       run: npm install --save-dev @types/node
 
-    - name: Set environment variables
-      run: |
-        echo "NG_APP_FIREBASE_API_KEY=${{ secrets.NG_APP_FIREBASE_API_KEY }}" >> $GITHUB_ENV
-        echo "NG_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.NG_APP_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
-        echo "NG_APP_FIREBASE_PROJECT_ID=${{ secrets.NG_APP_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
-        echo "NG_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.NG_APP_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
-        echo "NG_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.NG_APP_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
-        echo "NG_APP_FIREBASE_APP_ID=${{ secrets.NG_APP_FIREBASE_APP_ID }}" >> $GITHUB_ENV
-        echo "NG_APP_FIREBASE_MEASUREMENT_ID=${{ secrets.NG_APP_FIREBASE_MEASUREMENT_ID }}" >> $GITHUB_ENV
+    # - name: Set environment variables
+    #   run: |
+    #     echo "NG_APP_FIREBASE_API_KEY=${{ secrets.NG_APP_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+    #     echo "NG_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.NG_APP_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+    #     echo "NG_APP_FIREBASE_PROJECT_ID=${{ secrets.NG_APP_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+    #     echo "NG_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.NG_APP_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+    #     echo "NG_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.NG_APP_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+    #     echo "NG_APP_FIREBASE_APP_ID=${{ secrets.NG_APP_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+    #     echo "NG_APP_FIREBASE_MEASUREMENT_ID=${{ secrets.NG_APP_FIREBASE_MEASUREMENT_ID }}" >> $GITHUB_ENV
 
 
     - name: Build the project
       run: 
         ng build --configuration production --base-href "https://nhnam47.github.io/theboringtools/"
+      env:
+        NG_APP_FIREBASE_API_KEY: ${{ secrets.NG_APP_FIREBASE_API_KEY }}
+        NG_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.NG_APP_FIREBASE_AUTH_DOMAIN }}
+        NG_APP_FIREBASE_PROJECT_ID: ${{ secrets.NG_APP_FIREBASE_PROJECT_ID }}
+        NG_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.NG_APP_FIREBASE_STORAGE_BUCKET }}
+        NG_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.NG_APP_FIREBASE_MESSAGING_SENDER_ID }}
+        NG_APP_FIREBASE_APP_ID: ${{ secrets.NG_APP_FIREBASE_APP_ID }}
+        NG_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.NG_APP_FIREBASE_MEASUREMENT_ID }}
+
+
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
